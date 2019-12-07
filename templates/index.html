@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>GCI 2019 - Dockerize Example: Todo App</title>
+</head>
+
+<body>
+    <h1>Todo App | Dockerized</h1>
+    <h2>This is an easy implementation of Python Flask and MongoDB with Docker</h2>
+
+    <div>
+        <form action="" method="POST">
+            <label for="title">Activity Title: </label>
+            <input type="text" name="title" id="title">
+            <button type="submit">Add</button>
+        </form>
+        {% if get_flashed_messages()|length != 0 %}
+        <p>
+            {{get_flashed_messages()[0]}}
+        </p>
+        {% endif %}
+    </div>
+    <hr>
+    <div>
+        <table border="1">
+            {% for i in activities %}
+            <tr>
+                <td>{{i['title']}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</body>
+
+</html>

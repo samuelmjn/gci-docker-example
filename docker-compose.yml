@@ -1,0 +1,24 @@
+version: '2'
+services:
+    mongo:
+        image: mongo:3.6.8
+        ports:
+        - "27017:27017"
+        volumes: 
+        - ./mongo-volume:/data/db
+        environment:
+        - MONGO_INITDB_ROOT_USERNAME=root
+        - MONGO_INITDB_ROOT_PASSWORD=root
+        - MONGO_INITDB_DATABASE=admin
+
+    app:
+        build:
+            context: .
+        ports:
+            - "5000:5000"
+        environment: 
+            - MONGODB_HOST=mongodb://root:root@mongo:27017/
+            - MONGODB_DATABASE=gci
+            - MONGODB_COLLECTION=docker-example
+        volumes:
+            - .:/app
